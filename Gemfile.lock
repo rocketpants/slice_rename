@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    slice_rename (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    mini_magick (4.5.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mini_magick
+  slice_rename!
+
+RUBY VERSION
+   ruby 2.3.1p112
+
+BUNDLED WITH
+   1.12.4
