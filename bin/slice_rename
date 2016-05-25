@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'slice_rename'
+SliceRename::Cli.perform
