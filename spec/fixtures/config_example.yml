@@ -1,0 +1,13 @@
+slice_rename_config:
+  rows: 2
+  columns: 3
+  width: 175
+  height: 175
+  padding: 2
+  suffixes:
+    - _elephant
+    - _giraffe
+    - _hippo
+    - _monkey
+    - _panda
+    - _rabbit
