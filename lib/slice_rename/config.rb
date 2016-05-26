@@ -18,13 +18,25 @@ module SliceRename
     def load(config_path)
       config = YAML::load_file(File.join(config_path)).fetch('slice_rename_config', {})
 
-      puts config.inspect
-
       @rows = config.fetch('rows', @rows)
       @columns = config.fetch('columns', @columns)
       @width = config.fetch('width', @width)
       @height = config.fetch('height', @height)
       @suffixes = config.fetch('suffixes', @suffixes)
+    end
+
+    def suffixes
+      count = @rows * @columns
+
+      if @suffixes.count < count
+        @suffixes = []
+
+        for i in 0..(count - 1)
+          @suffixes[i] = "_%02d" % (i + 1)
+        end
+      end
+
+      @suffixes
     end
   end
 end

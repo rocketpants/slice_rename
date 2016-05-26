@@ -13,6 +13,21 @@ RSpec.describe SliceRename::Config do
     end
   end
 
+  describe '#suffixes' do
+    let!(:suffixes) { ['poop'] }
+
+    it 'returns the supplied suffixes if it has enough' do
+      config.instance_variable_set :@suffixes, suffixes
+      expect(config.suffixes).to eq suffixes
+    end
+
+    it 'returns an auto generated array if suffixes are missing' do
+      config.instance_variable_set :@rows, 2
+      config.instance_variable_set :@columns, 2
+      expect(config.suffixes).to eq ['_01', '_02', '_03', '_04']
+    end
+  end
+
   describe 'fields' do
     it 'exposes the input file path' do
       expect(config.path).to be_a String

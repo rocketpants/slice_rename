@@ -2,8 +2,7 @@ require 'slice_rename/slicer'
 
 RSpec.describe SliceRename::Slicer do
   let(:image_double) { double(:image) }
-  let(:path) { 'path/to/my_awesome_image.png' }
-  let(:config) { SliceRename::Config.new path }
+  let(:config) { SliceRename::Config.new }
   let(:suffixes) {
     [
       'potatoes',
