@@ -1,12 +1,25 @@
 # Slice Rename
 Slice an image and give each slice a specific name.
 
-# Configuration
+# Usage
+The CLI takes two arguments, the path to the image to be sliced and a
+configuration file. The output will be placed in the same folder as the input
+image. If you don't provide a configuration file it will use default settings
+which aren't useful for anything.
+
+```
+-c, --config MANDATORY  Configuration file (see below)
+-d, --debug             Output debug info
+-v, --version           Display the version
+-h, --help              Display this message
+```
+
+## Configuration
 See the example which is located at `spec/fixtures/config_example.yml`. The
 suffixes aren't mandatory, if you skip them or don't provide enough it will use
 an auto generated suffix instead (`_00`).
 
-The sample image is part of duty free asset pack from
+The sample image is part of a duty free asset pack from
 [kenney.nl](http://kenney.nl/).
 
 # About Rocket Pants
