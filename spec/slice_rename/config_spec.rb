@@ -53,6 +53,10 @@ RSpec.describe SliceRename::Config do
       expect(config.height).to be_an Integer
     end
 
+    it 'exposes the padding between slices' do
+      expect(config.padding).to be_an Integer
+    end
+
     it 'exposes a list of suffixes for the resulting file names' do
       expect(config.suffixes).to be_an Array
     end

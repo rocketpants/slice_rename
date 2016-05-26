@@ -14,7 +14,7 @@ module SliceRename
           # Not sure why we need to reload the image each time.
           image = open_image config.path
 
-          crop = "#{config.width}x#{config.height}+#{x * config.width}+#{y * config.height}"
+          crop = "#{config.width}x#{config.height}+#{x * config.width + (x + 1) * config.padding}+#{y * config.height + (y + 1) * config.padding}"
           output_name = "#{path}/#{name}#{config.suffixes[i]}#{extension}"
 
           if config.debug
