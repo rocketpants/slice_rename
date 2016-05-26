@@ -11,6 +11,10 @@ module SliceRename
       parser = OptionParser.new do |opts|
         opts.banner = "Usage: file [options]"
 
+        opts.on("-c", "--config MANDATORY", "A YAML file that contains the slice and name configuration") do |v|
+          config.load v
+        end
+
         opts.on("-d", "--debug", "Output debug info") do |v|
           config.debug = true
         end

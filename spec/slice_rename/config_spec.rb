@@ -1,17 +1,25 @@
+require 'yaml'
 require 'slice_rename/config'
 
 RSpec.describe SliceRename::Config do
-  let(:path) { 'path/to/my_awesome_image.png' }
-  let(:debug) { true }
-  let(:config) { SliceRename::Config.new path, debug }
+  let(:config) { SliceRename::Config.new }
+
+  describe '#load' do
+    let(:config_path) { 'path/to/my_awesome_config.yml' }
+
+    it 'loads the config file' do
+      expect(YAML).to receive(:load_file) { {} }
+      config.load config_path
+    end
+  end
 
   describe 'fields' do
     it 'exposes the input file path' do
-      expect(config.path).to eq path
+      expect(config.path).to be_a String
     end
 
     it 'exposes whether to display debug info' do
-      expect(config.debug).to eq debug
+      expect(config.debug).to eq false
     end
 
     it 'exposes the number of rows' do
