@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    slice_rename (0.0.2)
+    slice_rename (0.1.0)
 
 GEM
   remote: https://rubygems.org/

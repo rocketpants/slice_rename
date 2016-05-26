@@ -1,8 +1,11 @@
 module SliceRename
   class Config
-    attr_reader :rows, :columns, :width, :height, :suffixes
+    attr_accessor :path, :debug
+    attr_reader :path, :debug, :rows, :columns, :width, :height, :suffixes
 
-    def initialize
+    def initialize(path = '', debug = false)
+      @path = path
+      @debug = debug
       @rows = 5
       @columns = 4
       @width = 15
