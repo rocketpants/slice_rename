@@ -36,7 +36,11 @@ module SliceRename
     end
 
     def self.save_slice(image, file_name, cropping)
-      image.crop cropping
+      image.combine_options do |c|
+        c.crop cropping
+        c.repage.+
+      end
+
       image.write file_name
     end
   end
