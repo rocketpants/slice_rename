@@ -3,7 +3,6 @@ require 'mini_magick'
 module SliceRename
   class Slicer
     def self.slice_image(config)
-
       extension = File.extname config.path
       name = File.basename config.path, extension
       path = File.dirname config.path
@@ -14,15 +13,25 @@ module SliceRename
           # Not sure why we need to reload the image each time.
           image = open_image config.path
 
-          crop = "#{config.width}x#{config.height}+#{x * config.width + (x + 1) * config.padding}+#{y * config.height + (y + 1) * config.padding}"
-          output_name = "#{path}/#{name}#{config.suffixes[i]}#{extension}"
+          unless config.suffixes[i].nil?
+            pos_x = (x * config.width) + (x * config.padding) + ((x + 1) * config.padding)
+            pos_y = (y * config.height) + (y * config.padding) + ((y + 1) * config.padding)
 
-          if config.debug
-            puts crop
-            puts output_name
+            if config.collapse_padding
+              pos_x -= (x * config.padding)
+              pos_y -= (y * config.padding)
+            end
+
+            crop = "#{config.width}x#{config.height}+#{pos_x}+#{pos_y}"
+            output_name = "#{path}/#{name}#{config.suffixes[i]}#{extension}"
+
+            if config.debug
+              puts "Output: #{output_name}"
+              puts "Crop: #{crop}"
+            end
+
+            save_slice image, output_name, crop
           end
-
-          save_slice image, output_name, crop
 
           i += 1
         end

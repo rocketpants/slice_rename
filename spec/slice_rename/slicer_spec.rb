@@ -8,7 +8,7 @@ RSpec.describe SliceRename::Slicer do
       'potatoes',
       'carrots',
       'onions',
-      'selery'
+      'celery'
     ]
   }
 

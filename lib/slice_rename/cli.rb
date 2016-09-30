@@ -2,17 +2,23 @@ require 'optparse'
 
 require 'slice_rename/config'
 require 'slice_rename/slicer'
+require 'slice_rename/combiner'
 
 module SliceRename
   class Cli
     def self.perform
       config = SliceRename::Config.new
+      combine = false
 
       parser = OptionParser.new do |opts|
         opts.banner = "Usage: file [options]"
 
         opts.on("-c", "--config MANDATORY", "A YAML file that contains the slice and name configuration") do |v|
           config.load v
+        end
+
+        opts.on("-k", "--combine", "Combine the images instead of slicing them") do |v|
+          combine = true
         end
 
         opts.on("-d", "--debug", "Output debug info") do |v|
@@ -46,7 +52,11 @@ module SliceRename
         config.path = arguments.first
       end
 
-      SliceRename::Slicer.slice_image config
+      if combine
+        SliceRename::Combiner.combine_images config
+      else
+        SliceRename::Slicer.slice_image config
+      end
     end
   end
 end

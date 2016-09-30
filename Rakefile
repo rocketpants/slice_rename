@@ -24,4 +24,8 @@ namespace :run do
   task :missing do
     ruby '-I ./lib bin/slice_rename'
   end
+
+  task :combine do
+    ruby '-I ./lib bin/slice_rename --combine --debug spec/fixtures/animals.png -c spec/fixtures/config_example.yml'
+  end
 end

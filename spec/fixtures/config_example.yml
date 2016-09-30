@@ -4,6 +4,7 @@ slice_rename_config:
   width: 175
   height: 175
   padding: 2
+  collapse_padding: true
   suffixes:
     - _elephant
     - _giraffe

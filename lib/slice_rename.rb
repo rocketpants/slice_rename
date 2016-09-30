@@ -1,5 +1,5 @@
 require 'slice_rename/cli'
 
 module SliceRename
-  VERSION = '0.3.0'
+  VERSION = '0.4.0'
 end
