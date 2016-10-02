@@ -20,19 +20,55 @@ See the example which is located at `spec/fixtures/config_example.yml`. The
 suffixes aren't mandatory, if you skip them or don't provide enough it will use
 an auto generated suffix instead (`_00`).
 
-The option called `collapse_padding` specifies if the padding between images
-are collapsed into eachother. Meaning that if the `padding` setting is 2 and
-`collapse_padding` is true then it expects all images to be separated by 2
+* `rows` - defaults to `1`
+
+	The number of rows in the image that you are slicing up or combining.
+
+* `columns` - defaults to `1`
+
+	The number of columns in the image that you are slicing up or combining.
+
+* `width` - defaults to `16`
+
+	The width of the individual slices in your image.
+
+* `height` - defaults to `16`
+
+	The height of the individual slices in yout image.
+
+* `padding` - defaults to `0`
+
+	The padding that is around each individual slice. See `collapse_padding`
+for more details on how the padding works.
+
+* `collapse_padding` - defaults to `false`
+
+	The option called `collapse_padding` specifies if the padding between
+images are collapsed into eachother. Meaning that if the `padding` setting is 2
+and `collapse_padding` is true then it expects all images to be separated by 2
 pixels. If `collapse_padding` is false it will instead expect 2 pixels around
 each image resulting in 4 pixels between images but only 2 around the whole
 image.
 
-Images created by slice_rename do not collapse the padding so
+	Images created by slice_rename do not collapse the padding so
 `collapse_padding` defaults to `false`. If you need the old behaviour simply
 set it to `true` in your config file.
 
-The sample image is part of a duty free asset pack from
-[kenney.nl](http://kenney.nl/).
+* `padding_color` - defaults to `none`
+
+	The color of the padding around your individual slices. The default is
+transparent, if you want a color pass a hex color code. Keep in mind that you
+need quotes since the `#` character is reserved for comments in YAML.
+
+* `background_color` - defaults to `none`
+
+	The color of the background behind your individual slices. The default
+is transparent, if you want a color pass a hex color code.
+
+* `debug` - defaults to `false`
+
+	When set to true slice_rename will spit out the arguments that get sent
+to ImageMagick, this can be helpful for finding problems.
 
 # About Rocket Pants
 ![Rocket Pants](http://rocketpants.se/logo_xsmall.png)
@@ -47,3 +83,6 @@ tool please consider supporting us by checking out our games. Find out more at
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+The sample image is part of a duty free asset pack from
+[kenney.nl](http://kenney.nl/).
