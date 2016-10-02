@@ -2,7 +2,7 @@ require 'yaml'
 
 module SliceRename
   class Config
-    attr_accessor :path, :debug
+    attr_accessor :path, :debug, :fallback
     attr_reader :rows, :columns, :width, :height, :padding, :collapse_padding,
                 :padding_color, :background_color
 
@@ -18,6 +18,7 @@ module SliceRename
       @collapse_padding = false
       @padding_color = 'none'
       @background_color = 'none'
+      @fallback = ''
     end
 
     def load(config_path)

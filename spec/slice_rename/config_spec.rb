@@ -60,5 +60,21 @@ RSpec.describe SliceRename::Config do
     it 'exposes a list of suffixes for the resulting file names' do
       expect(config.suffixes).to be_an Array
     end
+
+    it 'exposes the wether to collapse padding or not' do
+      expect(config.collapse_padding).to be_falsy
+    end
+
+    it 'exposes the padding color' do
+      expect(config.padding_color).to be_a String
+    end
+
+    it 'exposes the background color' do
+      expect(config.background_color).to be_a String
+    end
+
+    it 'exposes the fallback file name' do
+      expect(config.fallback).to be_a String
+    end
   end
 end

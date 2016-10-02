@@ -7,9 +7,15 @@ configuration file. The output will be placed in the same folder as the input
 image. If you don't provide a configuration file it will use default settings
 which aren't useful for anything.
 
+The `fallback` argument can be used if you are combining slices but are missing
+some slices for the specific variation. When combining slices it will first
+look for a file based on the input path (name + suffix), if it doesn't find a
+file that way it will use the fallback (fallback + suffix).
+
 ```
 -c, --config MANDATORY  Configuration file (see below)
 -k, --combine           Combine all slices to one image
+-f, --fallback		A base name used if a file can't be found
 -d, --debug             Output debug info
 -v, --version           Display the version
 -h, --help              Display this message

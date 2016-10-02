@@ -15,7 +15,14 @@ module SliceRename
 
       config.suffixes.each do |suffix|
         if suffix != nil
-          images << "#{path}/#{name}#{suffix}#{extension}"
+          input_path = "#{path}/#{name}#{suffix}#{extension}"
+
+          if !Pathname.new(input_path).file?
+            input_path = "#{path}/#{config.fallback}#{suffix}#{extension}"
+            input_path = 'null:' if !Pathname.new(input_path).file?
+          end
+
+          images << input_path
         else
           images << 'null:'
         end

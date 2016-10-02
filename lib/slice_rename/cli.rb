@@ -21,6 +21,10 @@ module SliceRename
           combine = true
         end
 
+        opts.on("-f", "--fallback [FALLBACK]", "A base name used if a file can't be found") do |v|
+          config.fallback = v
+        end
+
         opts.on("-d", "--debug", "Output debug info") do |v|
           config.debug = true
         end
