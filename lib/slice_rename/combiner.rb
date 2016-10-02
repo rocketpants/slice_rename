@@ -27,7 +27,7 @@ module SliceRename
         puts "Geometry: #{geometry}"
       end
 
-      save_combination(images, output_name, geometry, tile, border)
+      save_combination(config, images, output_name, geometry, tile, border)
     end
 
     private
@@ -36,7 +36,7 @@ module SliceRename
       MiniMagick::Image.open path
     end
 
-    def self.save_combination(input_names, output_name, geometry, tile, border)
+    def self.save_combination(config, input_names, output_name, geometry, tile, border)
       MiniMagick::Tool::Montage.new do |montage|
         input_names.each do |file_name|
           montage << file_name
@@ -45,8 +45,8 @@ module SliceRename
         montage.geometry geometry
         montage.tile tile
         montage.border border
-        montage.bordercolor "none"
-        montage.background "none"
+        montage.bordercolor config.padding_color
+        montage.background config.background_color
         montage << output_name
       end
     end

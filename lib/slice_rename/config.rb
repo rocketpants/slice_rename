@@ -3,7 +3,8 @@ require 'yaml'
 module SliceRename
   class Config
     attr_accessor :path, :debug
-    attr_reader :rows, :columns, :width, :height, :padding, :collapse_padding
+    attr_reader :rows, :columns, :width, :height, :padding, :collapse_padding,
+                :padding_color, :background_color
 
     def initialize
       @path = ''
@@ -15,6 +16,8 @@ module SliceRename
       @padding = 0
       @suffixes = []
       @collapse_padding = false
+      @padding_color = 'none'
+      @background_color = 'none'
     end
 
     def load(config_path)
@@ -27,6 +30,8 @@ module SliceRename
       @padding = config.fetch('padding', @padding)
       @suffixes = config.fetch('suffixes', @suffixes)
       @collapse_padding = config.fetch('collapse_padding', @collapse_padding)
+      @padding_color = config.fetch('padding_color', @padding_color)
+      @background_color = config.fetch('background_color', @background_color)
     end
 
     def suffixes
