@@ -49,12 +49,11 @@ for more details on how the padding works.
 
 * `collapse_padding` - defaults to `false`
 
-	The option called `collapse_padding` specifies if the padding between
-images are collapsed into eachother. Meaning that if the `padding` setting is 2
-and `collapse_padding` is true then it expects all images to be separated by 2
-pixels. If `collapse_padding` is false it will instead expect 2 pixels around
-each image resulting in 4 pixels between images but only 2 around the whole
-image.
+	This specifies if the padding between images are collapsed into
+eachother. Meaning that if the `padding` setting is 2 and `collapse_padding` is
+true then it expects all images to be separated by 2 pixels. If
+`collapse_padding` is false it will instead expect 2 pixels around each image
+resulting in 4 pixels between images but only 2 around the whole image.
 
 	Images created by slice_rename do not collapse the padding so
 `collapse_padding` defaults to `false`. If you need the old behaviour simply
@@ -65,6 +64,13 @@ set it to `true` in your config file.
 	The color of the padding around your individual slices. The default is
 transparent, if you want a color pass a hex color code. Keep in mind that you
 need quotes since the `#` character is reserved for comments in YAML.
+
+* `full_grid` - defaults to `true`
+
+	This option decides if it should draw padding around empty images when
+combining. When this is false empty spaces are filled with background color.
+It defaults to true since that generates a grid that covers the whole image
+however many empty images it has.
 
 * `background_color` - defaults to `none`
 

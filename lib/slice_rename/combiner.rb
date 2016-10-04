@@ -12,6 +12,11 @@ module SliceRename
       geometry = "#{config.width}x#{config.height}\>+0+0"
       border = "#{config.padding}x#{config.padding}"
       tile = "#{config.columns}x#{config.rows}"
+      empty_image = config.full_grid ? "#{path}/empty.png" : 'null:'
+
+      if config.full_grid
+        generate_empty_image config
+      end
 
       config.suffixes.each do |suffix|
         if suffix != nil
@@ -19,12 +24,12 @@ module SliceRename
 
           if !Pathname.new(input_path).file?
             input_path = "#{path}/#{config.fallback}#{suffix}#{extension}"
-            input_path = 'null:' if !Pathname.new(input_path).file?
+            input_path = empty_image if !Pathname.new(input_path).file?
           end
 
           images << input_path
         else
-          images << 'null:'
+          images << empty_image
         end
       end
 
@@ -35,6 +40,10 @@ module SliceRename
       end
 
       save_combination(config, images, output_name, geometry, tile, border)
+
+      if config.full_grid
+        File.delete "#{path}/empty.png"
+      end
     end
 
     private
@@ -55,6 +64,14 @@ module SliceRename
         montage.bordercolor config.padding_color
         montage.background config.background_color
         montage << output_name
+      end
+    end
+
+    def self.generate_empty_image(config)
+      MiniMagick::Tool::Convert.new do |convert|
+        convert.size "#{config.width}x#{config.height}"
+        convert << 'xc:transparent'
+        convert << "#{File.dirname(config.path)}/empty.png"
       end
     end
   end

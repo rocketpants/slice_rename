@@ -61,12 +61,16 @@ RSpec.describe SliceRename::Config do
       expect(config.suffixes).to be_an Array
     end
 
-    it 'exposes the wether to collapse padding or not' do
+    it 'exposes wether to collapse padding or not' do
       expect(config.collapse_padding).to be_falsy
     end
 
     it 'exposes the padding color' do
       expect(config.padding_color).to be_a String
+    end
+
+    it 'exposes wether to draw padding around empty images' do
+      expect(config.full_grid).to be_truthy
     end
 
     it 'exposes the background color' do

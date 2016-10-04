@@ -4,7 +4,7 @@ module SliceRename
   class Config
     attr_accessor :path, :debug, :fallback
     attr_reader :rows, :columns, :width, :height, :padding, :collapse_padding,
-                :padding_color, :background_color
+                :padding_color, :background_color, :full_grid
 
     def initialize
       @path = ''
@@ -17,6 +17,7 @@ module SliceRename
       @suffixes = []
       @collapse_padding = false
       @padding_color = 'none'
+      @full_grid = true
       @background_color = 'none'
       @fallback = ''
     end
@@ -32,6 +33,7 @@ module SliceRename
       @suffixes = config.fetch('suffixes', @suffixes)
       @collapse_padding = config.fetch('collapse_padding', @collapse_padding)
       @padding_color = config.fetch('padding_color', @padding_color)
+      @full_grid = config.fetch('full_grid', @full_grid)
       @background_color = config.fetch('background_color', @background_color)
     end
 
