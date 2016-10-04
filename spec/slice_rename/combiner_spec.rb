@@ -20,8 +20,10 @@ RSpec.describe SliceRename::Combiner do
 
   describe '.combine_images' do
     it 'combines the images and saves them as a single image' do
+      allow_any_instance_of(Pathname).to receive(:file?).and_return(true)
+
       expect(SliceRename::Combiner).to(
-        receive(:save_combination).exactly(1).times do |input_names, output_name, geometry, tile, border|
+        receive(:save_combination).exactly(1).times do |config, input_names, output_name, geometry, tile, border|
           input_names.each_with_index do |name, index|
             expect(name).to include suffixes[index]
           end
