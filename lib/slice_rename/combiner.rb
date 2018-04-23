@@ -63,6 +63,7 @@ module SliceRename
         montage.border border
         montage.bordercolor config.padding_color
         montage.background config.background_color
+        montage.compose "Copy"
         montage << output_name
       end
     end

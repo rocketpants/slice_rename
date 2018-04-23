@@ -4,6 +4,7 @@ slice_rename_config:
   width: 175
   height: 175
   padding: 2
+  padding_color: "#fcc"
   collapse_padding: true
   suffixes:
     - _elephant
